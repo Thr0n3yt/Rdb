@@ -1,4 +1,4 @@
-name: Cl
+name: Window
 
 on: [push, workflow_dispatch]
 
