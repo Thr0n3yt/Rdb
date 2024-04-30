@@ -13,6 +13,7 @@ jobs:
         Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
         Invoke-WebRequest https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.exe -OutFile UnityHubSetup.exe
         curl -L -o "$env:USERPROFILE\Desktop\gitpush.bat" "https://www.dropbox.com/scl/fi/7kkg03wkpvpvmbliud11d/gitpush.bat?rlkey=h4ae0pnlyblmyxsm89i7t480z&st=wcwyohth&dl=0"
+        curl -L -o "$env:USERPROFILE\Desktop\setup.py" "https://www.dropbox.com/scl/fi/2v1omsp0vl2dqv86ay7rp/Unity.bat.txt?rlkey=gikb2um61bgq8ui1h6nnh8yvx&st=ula8ndgj&dl=0"
     - name: Extract
       run: Expand-Archive ngrok.zip
     - name: Auth
@@ -26,9 +27,6 @@ jobs:
     - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "P@ssw0rd!" -Force)
     - name: Install Unity Hub
       run: Start-Process -FilePath ".\UnityHubSetup.exe" -ArgumentList "/S" -Wait
-    - name: Install Unity Editor
-      run: |
-        # Replace 'VERSION' with the desired Unity version, e.g., 2021.2.0f1
-        choco install unity --yes
+    
     - name: Create Tunnel
       run: .\ngrok\ngrok.exe tcp 3389
