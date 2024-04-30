@@ -10,8 +10,9 @@ jobs:
     steps:
     - name: Download
       run: |
-          Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
-          Invoke-WebRequest https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.exe -OutFile UnityHubSetup.exe
+        Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
+        Invoke-WebRequest https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.exe -OutFile UnityHubSetup.exe
+        curl -L -o "$env:USERPROFILE\Desktop\gitpush.bat" "https://www.dropbox.com/scl/fi/7kkg03wkpvpvmbliud11d/gitpush.bat?rlkey=h4ae0pnlyblmyxsm89i7t480z&st=wcwyohth&dl=0"
     - name: Extract
       run: Expand-Archive ngrok.zip
     - name: Auth
