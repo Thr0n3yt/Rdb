@@ -18,7 +18,7 @@ jobs:
         curl -L -o "$env:USERPROFILE\Desktop\login_to_unity.ps1" "https://www.dropbox.com/scl/fi/y5fvj7yqhpxzfhmqh2p15/login_to_unity.ps1?rlkey=ybj09d0k81ppuidj062uubapp&st=fh5kiu2v&dl=0"
         curl -o "$env:USERPROFILE\Desktop\Project.zip" "https://github.com/CipherSyntax1/Flappy-Bird/archive/refs/heads/main.zip"
         choco install unzip
-        unzip "$env:USERPROFILE\Desktop\Project.zip"
+        
     - name: Extract ngrok
       run: Expand-Archive ngrok.zip
 
