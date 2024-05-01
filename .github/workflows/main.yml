@@ -42,12 +42,7 @@ jobs:
       run: powershell.exe -File login_to_unity.ps1
       shell: powershell
 
-    - name: Run gitsetup.ps1
-      run: |
-        powershell.exe -File gitsetup.ps1
-        Move-Item -Path "Flappy-Bird" -Destination "$env:USERPROFILE\Desktop"
-      shell: powershell
- 
+    
     - name: Run unity.ps1 and move Flappy-Bird directory
       run: |
         powershell.exe -File unity.ps1
