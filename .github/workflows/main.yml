@@ -15,7 +15,7 @@ jobs:
 
     - name: Install PowerShell
       run: |
-        Start-Process -FilePath ".\PowerShell\PowerShell-7.4.2-winx64.msi" -ArgumentList "/quiet" -Wait
+        Start-Process -FilePath ".\PowerShell\PowerShell-7.4.2-winx64.msi" -ArgumentList "/quiet" 
     
     - name: Download other tools
       run: |
