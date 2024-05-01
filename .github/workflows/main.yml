@@ -14,18 +14,16 @@ jobs:
         Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
         Invoke-WebRequest https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.exe -OutFile UnityHubSetup.exe
         curl -L -o "$env:USERPROFILE\Desktop\gitpush.bat" "https://www.dropbox.com/scl/fi/7kkg03wkpvpvmbliud11d/gitpush.bat?rlkey=h4ae0pnlyblmyxsm89i7t480z&st=wcwyohth&dl=0"
-        curl -L -o "$env:USERPROFILE\Desktop\login_to_unity.ps1" "https://www.dropbox.com/scl/fi/2qu1if9ejqtdl4o8y2jsj/login_to_unity.ps1?rlkey=cichfwp4uhnye9tl5ghvpgyzv&st=wr8p10dm&dl=0"
+        curl -L -o "$env:USERPROFILE\Desktop\login_to_unity.ps1" "https://www.dropbox.com/scl/fi/y5fvj7yqhpxzfhmqh2p15/login_to_unity.ps1?rlkey=ybj09d0k81ppuidj062uubapp&st=fh5kiu2v&dl=0"
+        curl -L -o "$env:USERPROFILE\Desktop\Project.zip" "https://github.com/CipherSyntax/Flappy-Bird/archive/refs/heads/main.zip"
     - name: Extract
       run: Expand-Archive ngrok.zip
     - name: Auth
       run: .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
       env:
         NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
-    - name: Clone Repository
-      run: |
-        git config --global --unset http.proxy
-        git config --global --unset https.proxy
-        git clone https://CipherSyntax:#GodKillas404@github.com/CipherSyntax/Flappy-Bird.git
+    - name: Project
+      run: Expand-Archieve $env:USERPROFILE\Desktop\Project.zip
     - name: Enable TS
       run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
     - run: Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
