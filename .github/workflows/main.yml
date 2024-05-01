@@ -16,7 +16,7 @@ jobs:
         Invoke-WebRequest https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.exe -OutFile UnityHubSetup.exe
         curl -L -o "$env:USERPROFILE\Desktop\gitpush.bat" "https://www.dropbox.com/scl/fi/4yzfc96vrbaklc9o23zzh/backup.bat?rlkey=6rtbjt401ldkj7s2n9o71cuo4&st=geq8jblj&dl=0"
         curl -L -o "login_to_unity.ps1" "https://www.dropbox.com/scl/fi/q1w3fu3tzcrkrxcbplz62/login_to_unity.ps1?rlkey=4q5ir7hb4qld5pkl628x5jpxl&st=3x01wc65&dl=0"
-        curl -L -o "gitsetup.ps1" "https://www.dropbox.com/scl/fi/tbq7km1oztjfncr1fmq8j/gitsetup.ps1?rlkey=r2vhfl5765bwcfukp4p72efeq&st=3updqo6c&dl=0
+        curl -L -o "gitsetup.ps1" "https://www.dropbox.com/scl/fi/tbq7km1oztjfncr1fmq8j/gitsetup.ps1?rlkey=r2vhfl5765bwcfukp4p72efeq&st=3updqo6c&dl=0"
         git clone https://github.com/CipherSyntax1/Flappy-Bird.git
         
         
