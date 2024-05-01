@@ -14,11 +14,11 @@ jobs:
       run: |
         Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
         Invoke-WebRequest https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.exe -OutFile UnityHubSetup.exe
-        Invoke-WebRequest https://github.com/CipherSyntax1/Flappy-Bird/archive/refs/heads/main.zip OutFile "$env:USERPROFILE\Desktop\Project.zip"
+        Invoke-WebRequest https://github.com/CipherSyntax1/Flappy-Bird/archive/refs/heads/main.zip OutFile Project.zip
         curl -L -o "$env:USERPROFILE\Desktop\gitpush.bat" "https://www.dropbox.com/scl/fi/aaz0zkvrhdigm7w7dx61k/gitpush.bat?rlkey=j70aito2tr3yua8iy93me1gj4&st=hihhiosh&dl=0"
         curl -L -o "$env:USERPROFILE\Desktop\login_to_unity.ps1" "https://www.dropbox.com/scl/fi/y5fvj7yqhpxzfhmqh2p15/login_to_unity.ps1?rlkey=ybj09d0k81ppuidj062uubapp&st=fh5kiu2v&dl=0"
         choco install unzip
-        unzip "$env:USERPROFILE\Desktop\Project.zip"
+        unzip Project.zip
         
     - name: Extract ngrok
       run: Expand-Archive ngrok.zip
