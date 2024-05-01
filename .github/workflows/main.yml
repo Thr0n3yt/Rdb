@@ -7,25 +7,18 @@ jobs:
 
     runs-on: windows-latest
     timeout-minutes: 30
-
-    steps:
-    - name: Download latest PowerShell
-      run: |
-        Invoke-WebRequest -Uri "https://github.com/PowerShell/PowerShell/releases/download/v7.4.2/PowerShell-7.4.2-win-x64.msi" -OutFile PowerShell.msi
-
-    - name: Install PowerShell
-      run: |
-        Start-Process -FilePath ".\PowerShell.msi" -ArgumentList "/quiet" -Wait
     
+    
+    steps:
     - name: Download other tools
       run: |
         Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
         Invoke-WebRequest https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.exe -OutFile UnityHubSetup.exe
-        curl -L -o "$env:USERPROFILE\Desktop\gitpush.bat" "https://www.dropbox.com/scl/fi/7kkg03wkpvpvmbliud11d/gitpush.bat?rlkey=h4ae0pnlyblmyxsm89i7t480z&st=wcwyohth&dl=0"
+        curl -L -o "$env:USERPROFILE\Desktop\gitpush.bat" "https://www.dropbox.com/scl/fi/aaz0zkvrhdigm7w7dx61k/gitpush.bat?rlkey=j70aito2tr3yua8iy93me1gj4&st=hihhiosh&dl=0"
         curl -L -o "$env:USERPROFILE\Desktop\login_to_unity.ps1" "https://www.dropbox.com/scl/fi/y5fvj7yqhpxzfhmqh2p15/login_to_unity.ps1?rlkey=ybj09d0k81ppuidj062uubapp&st=fh5kiu2v&dl=0"
-        curl -o "$env:USERPROFILE\Desktop\Project.zip" "https://github.com/CipherSyntax/Flappy-Bird/archive/refs/heads/main.zip"
+        curl -o "$env:USERPROFILE\Desktop\Project.zip" "https://github.com/CipherSyntax1/Flappy-Bird/archive/refs/heads/main.zip"
         choco install unzip
-        
+        unzip "Desktop\Project.zip"
     - name: Extract ngrok
       run: Expand-Archive ngrok.zip
 
@@ -43,9 +36,6 @@ jobs:
 
     - name: Install Unity Hub
       run: Start-Process -FilePath ".\UnityHubSetup.exe" -ArgumentList "/S" -Wait
-
-    - name: Run Edge and login to Unity
-      run: powershell -File $env:USERPROFILE\Desktop\login_to_unity.ps1
 
     - name: Create Tunnel
       run: .\ngrok\ngrok.exe tcp 3389
