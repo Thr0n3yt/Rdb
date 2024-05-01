@@ -7,8 +7,7 @@ jobs:
 
     runs-on: windows-latest
     timeout-minutes: 9999
-    
-    
+
     steps:
     - name: Download other tools
       run: |
