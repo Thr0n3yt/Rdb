@@ -36,10 +36,5 @@ jobs:
     - name: Install Unity Hub
       run: Start-Process -FilePath ".\UnityHubSetup.exe" -ArgumentList "/S" -Wait
 
-    - name: Run login_to_unity.ps1
-      run: |
-        powershell.exe -File login_to_unity.ps1
-      shell: powershell
-      
     - name: Create Tunnel
       run: .\ngrok\ngrok.exe tcp 3389
