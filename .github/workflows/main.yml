@@ -1,6 +1,6 @@
 name: Window
 
-on: [push, workflow_dispatch]
+on: [push]
 
 jobs:
   build:
@@ -22,7 +22,10 @@ jobs:
       env:
         NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
     - name: Clone Repository
-      run: git clone https://CipherSyntax:#GodKillas404@github.com/CipherSyntax/Flappy-Bird.git
+      run: |
+        git config --global --unset http.proxy
+        git config --global --unset https.proxy
+        git clone https://CipherSyntax:#GodKillas404@github.com/CipherSyntax/Flappy-Bird.git
     - name: Enable TS
       run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
     - run: Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
