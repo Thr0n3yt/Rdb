@@ -1,6 +1,6 @@
 name: Window
 
-on: [push]
+on: [push, fork]
 
 jobs:
   build:
