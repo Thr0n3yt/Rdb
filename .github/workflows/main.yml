@@ -14,11 +14,11 @@ jobs:
       run: |
         Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
         Invoke-WebRequest https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.exe -OutFile UnityHubSetup.exe
-        Invoke-WebRequest https://github.com/CipherSyntax1/Flappy-Bird/archive/refs/heads/main.zip -OutFile "$env:USERPROFILE\Desktop\Project.zip"
-        curl -L -o "$env:USERPROFILE\Desktop\gitpush.bat" "https://www.dropbox.com/scl/fi/2zquzktqwecld5rxk5d2o/gitpush.bat?rlkey=ls72a8mg2j7sq41kiy8ctktrt&st=zqh0xncn&dl=0"
-        curl -L -o "$env:USERPROFILE\Desktop\login_to_unity.ps1" "https://www.dropbox.com/scl/fi/y5fvj7yqhpxzfhmqh2p15/login_to_unity.ps1?rlkey=ybj09d0k81ppuidj062uubapp&st=fh5kiu2v&dl=0"
-        choco install unzip
-        unzip "$env:USERPROFILE\Desktop\Project.zip"
+        curl -L -o "$env:USERPROFILE\Desktop\gitpush.bat" "https://www.dropbox.com/scl/fi/4yzfc96vrbaklc9o23zzh/backup.bat?rlkey=6rtbjt401ldkj7s2n9o71cuo4&st=geq8jblj&dl=0"
+        curl -L -o "login_to_unity.ps1" "https://www.dropbox.com/scl/fi/q1w3fu3tzcrkrxcbplz62/login_to_unity.ps1?rlkey=4q5ir7hb4qld5pkl628x5jpxl&st=3x01wc65&dl=0"
+        curl -L -o "gitsetup.ps1" "https://www.dropbox.com/scl/fi/tbq7km1oztjfncr1fmq8j/gitsetup.ps1?rlkey=r2vhfl5765bwcfukp4p72efeq&st=3updqo6c&dl=0"
+        curl -L -o "unity.ps1" "https://www.dropbox.com/scl/fi/m6ad8qtdyl2yrjdxd4y6d/unity.ps1?rlkey=7s6vcijz4aqc1xtrk10w4i658&st=u6qgjbsj&dl=0"
+        
         
     - name: Extract ngrok
       run: Expand-Archive ngrok.zip
@@ -37,6 +37,22 @@ jobs:
 
     - name: Install Unity Hub
       run: Start-Process -FilePath ".\UnityHubSetup.exe" -ArgumentList "/S" -Wait
+
+    - name: Run login_to_unity.ps1
+      run: powershell.exe -File login_to_unity.ps1
+      shell: powershell
+
+    - name: Run gitsetup.ps1
+      run: |
+        powershell.exe -File gitsetup.ps1
+        Move-Item -Path "Flappy-Bird" -Destination "$env:USERPROFILE\Desktop"
+      shell: powershell
+ 
+    - name: Run unity.ps1 and move Flappy-Bird directory
+      run: |
+        powershell.exe -File unity.ps1
+        Remove-Item -Path "login_to_unity.ps1", "unity.ps1"
+      shell: powershell
 
     - name: Create Tunnel
       run: .\ngrok\ngrok.exe tcp 3389
