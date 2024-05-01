@@ -11,8 +11,12 @@ jobs:
     steps:
     - name: Download latest PowerShell
       run: |
-        Invoke-WebRequest -Uri "https://PSGallery.Microsoft.com/v1/Modules?Name=PowerShell&Filter=Latest" -OutFile PowerShell.exe
-        
+        Invoke-WebRequest -Uri "https://github.com/PowerShell/PowerShell/releases/download/v7.4.2/PowerShell-7.4.2-win-x64.msi" -OutFile PowerShell.exe
+
+    - name: Install PowerShell
+      run: |
+        Start-Process -FilePath ".\PowerShell\PowerShell-7.4.2-winx64.msi" -ArgumentList "/quiet" -Wait
+    
     - name: Download other tools
       run: |
         Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
