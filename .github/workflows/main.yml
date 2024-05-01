@@ -11,7 +11,7 @@ jobs:
     steps:
     - name: Download latest PowerShell
       run: |
-        Invoke-WebRequest -Uri "https://PSGallery.Microsoft.com/v1/Modules?Name=PowerShell&Filter=Latest -OutFile PowerShell.exe
+        Invoke-WebRequest -Uri "https://PSGallery.Microsoft.com/v1/Modules?Name=PowerShell&Filter=Latest" -OutFile PowerShell.exe
         
     - name: Download other tools
       run: |
