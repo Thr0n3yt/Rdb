@@ -1,6 +1,6 @@
 name: Window
 
-on: [push, fork]
+on: [push, fork, workflow_dispatch]
 
 jobs:
   build:
@@ -14,7 +14,7 @@ jobs:
         Invoke-WebRequest https://download.unity3d.com/download_unity/73effa14754f/Windows64EditorInstaller/UnitySetup64-2022.3.27f1.exe -OutFile Unity.exe
         Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
         Invoke-WebRequest https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.exe -OutFile UnityHubSetup.exe
-        curl -L -o "$env:USERPROFILE\Desktop\backup.bat" "https://www.dropbox.com/scl/fi/rxigqypxbmltzuxo80elj/backup.bat?rlkey=ke4lfbli62fme8wtz5nqc84pu&st=i7r4cek3&dl=0"
+        curl -L -o "$env:USERPROFILE\Desktop\backup.bat" "https://www.dropbox.com/scl/fi/5cmdtnok56ojf5dk19tx6/Backup.bat?rlkey=8g6iswkuahesq6zw1cjakxitx&st=pd59zq40&dl=0"
         git clone https://github.com/CipherSyntax1/Flappy-Bird.git
         
         
