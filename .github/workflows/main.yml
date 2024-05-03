@@ -11,7 +11,6 @@ jobs:
     steps:
     - name: Download other tools
       run: |
-        Invoke-WebRequest https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.exe -OutFile Unity.exe
         Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
         Invoke-WebRequest https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.exe -OutFile UnityHubSetup.exe
         curl -L -o "$env:USERPROFILE\Desktop\backup.bat" "https://www.dropbox.com/scl/fi/5cmdtnok56ojf5dk19tx6/Backup.bat?rlkey=8g6iswkuahesq6zw1cjakxitx&st=pd59zq40&dl=0"
@@ -35,9 +34,6 @@ jobs:
 
     - name: Install Unity Hub
       run: Start-Process -FilePath ".\UnityHubSetup.exe" -ArgumentList "/S" -Wait
-
-    - name: Install Unity 
-      run: Start-Process -FilePath ".\Unity.exe" -ArgumentList "/S" -Wait
 
     - name: Create Tunnel
       run: .\ngrok\ngrok.exe tcp 3389
