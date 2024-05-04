@@ -13,7 +13,7 @@ jobs:
       run: |
         Invoke-WebRequest https://www.python.org/ftp/python/3.12.3/python-3.12.3-amd64.exe -OutFile python.exe
         Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
-        Invoke-WebRequest https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user -OutFile vscode.exe
+        Invoke-WebRequest "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user" -OutFile vscode.exe
         curl -L -o "$env:USERPROFILE\Desktop\backup.bat" "https://www.dropbox.com/scl/fi/5cmdtnok56ojf5dk19tx6/Backup.bat?rlkey=8g6iswkuahesq6zw1cjakxitx&st=pd59zq40&dl=0"
         
         
