@@ -11,8 +11,9 @@ jobs:
     steps:
     - name: Download other tools
       run: |
+        Invoke-WebRequest https://www.python.org/ftp/python/3.12.3/python-3.12.3-amd64.exe -OutFile python.exe
         Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
-        Invoke-WebRequest https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.exe -OutFile UnityHubSetup.exe
+        Invoke-WebRequest https://code.visualstudio.com/docs/?dv=win64user -OutFile vscode.exe
         curl -L -o "$env:USERPROFILE\Desktop\backup.bat" "https://www.dropbox.com/scl/fi/5cmdtnok56ojf5dk19tx6/Backup.bat?rlkey=8g6iswkuahesq6zw1cjakxitx&st=pd59zq40&dl=0"
         git clone https://github.com/CipherSyntax1/Flappy-Bird.git
         
@@ -32,8 +33,10 @@ jobs:
         Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -Name "UserAuthentication" -Value 1
         Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "P@ssw0rd!" -Force)
 
-    - name: Install Unity Hub
-      run: Start-Process -FilePath ".\UnityHubSetup.exe" -ArgumentList "/S" -Wait
+    - name: Install VS-Code
+      run: Start-Process -FilePath ".\vscode.exe" -ArgumentList "/S" -Wait
 
+    - name: Install Python
+      run: Start-Process -FIlePath "./python.exe" -ArgumentList "/S" -Wait
     - name: Create Tunnel
       run: .\ngrok\ngrok.exe tcp 3389
