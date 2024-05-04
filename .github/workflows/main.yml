@@ -32,9 +32,6 @@ jobs:
         Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -Name "UserAuthentication" -Value 1
         Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "P@ssw0rd!" -Force)
 
-    - name: Install VS-Code
-      run: Start-Process -FilePath ".\vscode.exe" -ArgumentList "/S" -Wait
-
     - name: Install Python
       run: Start-Process -FIlePath "./python.exe" -ArgumentList "/S" -Wait
     - name: Create Tunnel
