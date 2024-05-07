@@ -1,0 +1,11 @@
+name: MacRDP
+on: 
+  workflow_dispatch:
+jobs:
+  build:
+    name: MacRDP
+    runs-on: macos-latest
+
+    steps:
+    - name: vnc
+      run: docker run -p 6080:80 -v /dev/shm:/dev/shm dorowu/ubuntu-desktop-lxde-vnc
