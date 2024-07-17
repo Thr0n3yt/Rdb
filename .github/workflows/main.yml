@@ -4,7 +4,6 @@ on: [push, fork, workflow_dispatch]
 
 jobs:
   build:
-
     runs-on: windows-latest
     timeout-minutes: 9999
 
